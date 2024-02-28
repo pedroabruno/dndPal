@@ -13,6 +13,10 @@ sv.use((req,res,next)=>{
     next()
 })
 
+sv.get('/', (req,res)=> {
+    res.send('<div>MAIN PAGE</div>')
+})
+
 sv.get('/monsters', (req,res)=> {
     res.json(monsters[0])
 })
