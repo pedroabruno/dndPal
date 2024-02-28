@@ -5,7 +5,7 @@ const monsters = require("./monsters.json");
 const express = require('express')
 const sv = express()
 
-const PORT = process.env.PORT ?? 5000
+const PORT = process.env.PORT ?? 3000
 
 sv.use((req,res,next)=>{
     //check permisos
