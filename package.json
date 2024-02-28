@@ -1,16 +1,15 @@
 {
-  "name": "dnd-sv",
+  "name": "dndpalsv",
   "version": "1.0.0",
   "description": "",
-  "main": "http.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build" : "node api/index.ts"
+    "dev": "node index.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4.18.2"
+    "express": "^4.18.2"
   }
 }
