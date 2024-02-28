@@ -4,7 +4,6 @@
   "description": "",
   "main": "http.js",
   "scripts": {
-    "dev" : "node expressServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel-build" : "node api/index.ts"
   },
