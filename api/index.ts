@@ -9,7 +9,7 @@ app.get("/monsters", (req, res) => {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
     })
-    res.json(monsters.slice(0, 9))
+    res.json({'monsters' : monsters.slice(0, 9)})
 });
 // app.get("/", (req, res) => monstersResources.getMonsters(req,res));
 
