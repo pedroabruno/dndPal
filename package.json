@@ -1,5 +1,4 @@
 {
-    "type": "module",
   "name": "dnd-sv",
   "version": "1.0.0",
   "description": "",
@@ -7,7 +6,7 @@
   "scripts": {
     "dev" : "node expressServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build" : "node api/index.js"
+    "vercel-build" : "node api/index.ts"
   },
   "keywords": [],
   "author": "",
