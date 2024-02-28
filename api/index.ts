@@ -4,7 +4,13 @@ const app = express();
 const monsters = require('../dbData/monsters.json')
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-app.get("/monsters", (req, res) => res.json(monsters.slice(0, 9)));
+app.get("/monsters", (req, res) => {
+    res.set({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+    })
+    res.json(monsters.slice(0, 9))
+});
 // app.get("/", (req, res) => monstersResources.getMonsters(req,res));
 
 
