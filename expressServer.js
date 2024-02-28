@@ -24,3 +24,5 @@ sv.get('/monsters', (req,res)=> {
 sv.listen(PORT, () => {
     console.log(`sv running on port: ${PORT}`)
 })
+
+export default sv;
