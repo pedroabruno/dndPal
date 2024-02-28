@@ -3,26 +3,18 @@ const require = createRequire(import.meta.url);
 const monsters = require("./monsters.json");
 
 const express = require('express')
-const sv = express()
+const app = express()
 
-const PORT = process.env.PORT ?? 3000
+const PORT = process.env.PORT ?? 3001
 
-sv.use((req,res,next)=>{
-    //check permisos
-    console.log('I should be checking permissions')
-    next()
-})
+// app.use((req,res,next)=>{
+//     //check permisos
+//     console.log('I should be checking permissions')
+//     next()
+// })
 
-sv.get('/', (req,res)=> {
-    res.send('<div>MAIN PAGE</div>')
-})
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
-sv.get('/monsters', (req,res)=> {
-    res.json(monsters[0])
-})
+app.listen(PORT, () => console.log("Server ready on port : " + PORT));
 
-sv.listen(PORT, () => {
-    console.log(`sv running on port: ${PORT}`)
-})
-
-export default sv;
+export default app;
