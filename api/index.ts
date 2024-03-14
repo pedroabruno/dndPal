@@ -1,9 +1,12 @@
-const pool = require('./db.ts')
+require('dotenv').config();
 const monsters = require('../dbData/monsters.json')
 var cors = require('cors');
 const express = require('express');
 const app = express();
 var allowedOrigins = ['http://localhost:3000','https://dnd-pal-page.vercel.app'];
+const {Pool} = require('pg');
+const connString = process.env.POSTGRES_URL
+const dbPool = new Pool({connectionString : connString})
 
 app.use(cors({
     origin: function(origin, callback){
@@ -33,7 +36,7 @@ app.get("/monsters", (req, res) => {
 });
 app.get("/battles", async (req, res) => {
     try{
-        const data = await pool.query('SELECT * FROM ENCOUNTER where idUser = 1')
+        const data = await dbPool.query('SELECT * FROM ENCOUNTER where idUser = 1')
         res.status(200).json({encounters: data.rows})
     }catch(error){
         console.log(error)
