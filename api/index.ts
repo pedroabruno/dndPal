@@ -1,11 +1,9 @@
-const express = require('express');
-const app = express();
-// const monstersResources = require('./resources/monstersResources.ts')
+const pool = require('./db.ts')
 const monsters = require('../dbData/monsters.json')
 var cors = require('cors');
-
-
-var allowedOrigins = ['http://localhost:3000','https://dnd-pal-page.vercel.app/'];
+const express = require('express');
+const app = express();
+var allowedOrigins = ['http://localhost:3000','https://dnd-pal-page.vercel.app'];
 
 app.use(cors({
     origin: function(origin, callback){
@@ -25,8 +23,6 @@ app.use((req,res,next)=>{
     // use for checking credentials
     next()
 })
-
-
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/monsters", (req, res) => {
     res.set({
@@ -35,7 +31,14 @@ app.get("/monsters", (req, res) => {
     })
     res.json({'monsters' : monsters.slice(0, 9)})
 });
-// app.get("/", (req, res) => monstersResources.getMonsters(req,res));
+app.get("/battles", async (req, res) => {
+    try{
+        const data = await pool.query('SELECT * FROM ENCOUNTER where idUser = 1')
+        res.status(200).json({encounters: data.rows})
+    }catch(error){
+        console.log(error)
+    }
+});
 
 
 app.listen(3001, () => console.log("Server ready on port 3001."));
